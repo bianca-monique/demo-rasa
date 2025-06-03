@@ -1,0 +1,49 @@
+version: '3.1'
+intents:
+- cancelar_pedido
+- confirmar_pedido
+- especificar_bolo
+- informar_endereco
+- pedir_bolo
+- saudar
+entities:
+- sabor
+- endereco
+slots:
+  endereco:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: endereco
+  sabor:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: sabor
+responses:
+  utter_saudar:
+  - text: Olá! Bem-vindo(a) à confeitaria. Como posso te ajudar hoje?
+  utter_pedir_bolo:
+  - text: Perfeito! Temos bolos deliciosos. Qual sabor você gostaria?
+  utter_especificar_bolo:
+  - text: Ótima escolha! Poderia me informar o endereço para entrega, por favor?
+  utter_informar_endereco:
+  - text: Endereço anotado! Você confirma seu pedido?
+  utter_confirmar_pedido:
+  - text: Pedido confirmado! Seu bolo de {sabor} será entregue no endereço {endereco}. Muito obrigado!
+  utter_cancelar_pedido:
+  - text: Tudo bem, seu pedido foi cancelado. Se precisar, estamos à disposição!
+  utter_goodbye:
+  - text: 'Tchau! Espero te ver novamente em breve! '
+  utter_iamabot:
+  - text: Eu sou um assistente virtual da confeitaria, desenvolvido com Rasa.
+actions:
+- utter_saudar
+- utter_pedir_bolo
+- utter_especificar_bolo
+- utter_informar_endereco
+- utter_confirmar_pedido
+- utter_cancelar_pedido
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
